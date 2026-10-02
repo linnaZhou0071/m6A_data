@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Please cite this repository and the SAC-seq, GLORI, and eTAM-seq source papers."
+title: "Single-base m6A curation and prime-editing candidate design code"
+type: software
+version: 0.3.0
+authors:
+  - family-names: Zhou
+    given-names: Yuling
+repository-code: "https://github.com/linnaZhou0071/m6A_data"
+license: MIT
+abstract: "Public MIT-licensed code and CC BY 4.0-licensed original documentation/figures for cross-method m6A curation and computational PE candidate design. The corrected row-level dataset is held locally and unpublished; third-party source-derived data are not relicensed."

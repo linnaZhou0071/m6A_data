@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 720" role="img" aria-labelledby="title desc">
+<title id="title">m6A dataset curation and candidate pegRNA design workflow</title>
+<desc id="desc">Published SAC-seq, GLORI and eTAM-seq data lead to HEK and HeLa high methylation site tables, then intersection and union sets, MANE effect exclusion, PEGG inputs, and intersection pegRNA candidates. Counts distinguish sites from effect and guide rows.</desc>
+<style>
+  .bg{fill:#f6f8fb}.card{fill:#fff;stroke:#bcc9d7;stroke-width:2}.blue{fill:#e9f2ff;stroke:#3984c8;stroke-width:2}.green{fill:#e9f8f0;stroke:#2d9b67;stroke-width:2}.amber{fill:#fff5e5;stroke:#c4801d;stroke-width:2}.muted{fill:#40536a}.strong{fill:#142638}.line{stroke:#72869a;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke:#98a7b7;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#arrow)}text{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#142638}.label{font-size:13px;letter-spacing:1px;font-weight:700}.big{font-size:25px;font-weight:700}.small{font-size:14px}.note{font-size:13px}
+</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#72869a"/></marker></defs>
+<rect class="bg" width="1160" height="720"/>
+<text x="34" y="41" class="big">From single-base m6A evidence to prime-editing candidates</text>
+<text x="34" y="67" class="small muted">Goal 1 — curate published site calls</text>
+<text x="610" y="67" class="small muted">Goal 2 — propose PE-screening candidates</text>
+<rect class="card" x="35" y="92" width="300" height="90" rx="12"/>
+<text x="56" y="121" class="label">PUBLISHED INPUTS</text>
+<text x="56" y="149">SAC-seq · GLORI · eTAM-seq</text>
+<path class="line" d="M186 182 V210"/>
+<rect class="blue" x="35" y="212" width="300" height="112" rx="12"/>
+<text x="56" y="240" class="label">CURATE BY GROUP</text>
+<text x="56" y="270">HEK ≥80%: 27,623 sites</text>
+<text x="56" y="298">HeLa ≥80%: 11,064 sites</text>
+<path class="line" d="M335 268 H372"/>
+<rect class="blue" x="375" y="212" width="330" height="112" rx="12"/>
+<text x="396" y="240" class="label">MATCH EXACT POSITION + RNA STRAND</text>
+<text x="396" y="270">Intersection: 5,646 sites</text>
+<text x="396" y="298">Union: 33,041 sites</text>
+<path class="line" d="M540 324 V355"/>
+<rect class="amber" x="375" y="358" width="330" height="127" rx="12"/>
+<text x="396" y="386" class="label">CORRECTED MANE-ONLY FILTER</text>
+<text x="396" y="417">Intersection: 3,814 remain</text>
+<text x="396" y="445">Union: 23,344 remain</text>
+<text x="396" y="469" class="note muted">1,832 / 9,697 sites excluded</text>
+<path class="line" d="M705 423 H745"/>
+<rect class="green" x="748" y="358" width="376" height="127" rx="12"/>
+<text x="769" y="386" class="label">CORRECTED GENOMIC-PLUS INPUT</text>
+<text x="769" y="417">Intersection: 3,814 variants</text>
+<text x="769" y="445">Union: 23,342 variants</text>
+<text x="769" y="469" class="note muted">RNA +: A→G · RNA −: T→C · 2 chrM skipped</text>
+<path class="dash" d="M936 485 V520"/>
+<rect class="green" x="748" y="523" width="376" height="128" rx="12"/>
+<text x="769" y="551" class="label">HISTORICAL PEGG SUBSET</text>
+<text x="769" y="580">3,564 retained sites with ≥1 guide</text>
+<text x="769" y="606" class="small">129,128 / 248,876 pegRNA rows</text>
+<text x="769" y="632" class="note muted">250 retained inputs without a design</text>
+<rect class="card" x="35" y="533" width="630" height="118" rx="12"/>
+<text x="57" y="562" class="label">IMPORTANT INTERPRETATION</text>
+<text x="57" y="591" class="small">MANE-only retention is not proof of protein safety in all isoforms.</text>
+<text x="57" y="617" class="small">Guides are filtered historical designs, not a new PEGG run.</text>
+<path class="dash" d="M540 485 V532"/>
+<text x="35" y="691" class="note muted">Counts are unique sites unless labeled guide rows. Historical full outputs remain local; corrected-filter subsets are staged for Zenodo review.</text>
+</svg>

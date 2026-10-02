@@ -1,0 +1,84 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Python environments and packaging
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Downloaded reference genomes and annotations
+GRCh38.fa
+GRCh38.fa.*
+GCF_*_genomic.fna.gz
+hg38.ncbiRefSeq.gtf.gz
+MANE.GRCh38.*.gtf.gz
+
+# Third-party source material and local historical files: do not relicense/publish
+# Preliminary root files are kept locally, outside the clean public snapshot
+/HEK_HeLa_over80_intersection.csv
+/HEK_HeLa_over80_union.csv
+/merge_csv_by_pos.py
+/potential_SNP.xlsx
+/SAC-seq_data.xlsx
+/GLORI_HEK293T_mRNA.xlsx
+/eTAM-seq data/
+
+# Superseded release plans retained locally for audit
+/metadata/PUBLICATION_PLAN.md
+/metadata/PUBLICATION_CHECKPOINT.md
+/metadata/ZENODO_DRAFT_PREVIEW.md
+
+# Optional future guide export; never stage without a separate file-level review
+/data/zenodo_preview/
+/reference/
+
+# All site-level and guide CSVs remain local; no current row-level data release
+/data/
+/metadata/local_file_inventory.tsv
+/metadata/local_candidate_checksums.sha256
+/metadata/checksums.sha256
+/local/
+
+# Full PEGG tables exceed GitHub's ordinary per-file limit; keep locally
+/pegg_results_*.csv
+/data/reanalysis/full_guides/
+
+/pegg-*.whl
+
+# Historical plot project and superseded JPEGs stay local for audit
+/m6A项目作图.pzfx
+/figures/*.jpg

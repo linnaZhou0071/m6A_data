@@ -1,0 +1,77 @@
+{
+  "threshold": "methylation >= 80%",
+  "high_methylation_sites": {
+    "HEK": 27623,
+    "HeLa": 11064
+  },
+  "branches": {
+    "intersection": {
+      "counts": {
+        "original_sites": 5646,
+        "cds_sites": 2758,
+        "effect_rows": 16402,
+        "effect_sites": 2126,
+        "cds_missing_effect_record": 632,
+        "cds_missing_effect_record_minus_strand": 632,
+        "mane_nonsyn_sites_removed": 1571,
+        "filtered_sites": 4075,
+        "filtered_sites_with_nonsyn_in_any_transcript": 28,
+        "pegg_input_sites": 4075,
+        "filtered_not_in_pegg_input": [],
+        "default_designs": 136868,
+        "default_sites_with_designs": 3796,
+        "default_input_sites_without_designs": 279,
+        "custom_designs": 264104,
+        "custom_sites_with_designs": 3796,
+        "custom_input_sites_without_designs": 279
+      },
+      "checks": {
+        "set_definition": true,
+        "annotation_covers_all_sites": true,
+        "cds_matches_annotation": true,
+        "effects_within_cds": true,
+        "filter_equals_original_minus_mane_nonsyn": true,
+        "pegg_input_within_filtered": true,
+        "default_design_sites_within_input": true,
+        "default_unique_pegRNA_id": true,
+        "default_one_rank1_per_designed_site": true,
+        "custom_design_sites_within_input": true,
+        "custom_unique_pegRNA_id": true,
+        "custom_one_rank1_per_designed_site": true
+      }
+    },
+    "union": {
+      "counts": {
+        "original_sites": 33041,
+        "cds_sites": 13279,
+        "effect_rows": 80696,
+        "effect_sites": 10783,
+        "cds_missing_effect_record": 2496,
+        "cds_missing_effect_record_minus_strand": 2496,
+        "mane_nonsyn_sites_removed": 8493,
+        "filtered_sites": 24548,
+        "filtered_sites_with_nonsyn_in_any_transcript": 181,
+        "pegg_input_sites": 24546,
+        "filtered_not_in_pegg_input": [
+          "chrM_16559_+",
+          "chrM_5795_-"
+        ]
+      },
+      "checks": {
+        "set_definition": true,
+        "annotation_covers_all_sites": true,
+        "cds_matches_annotation": true,
+        "effects_within_cds": true,
+        "filter_equals_original_minus_mane_nonsyn": true,
+        "pegg_input_within_filtered": true
+      }
+    }
+  },
+  "release_status": "review_required",
+  "threshold_qc": {
+    "HEK_exactly_80_percent": 38,
+    "HeLa_exactly_80_percent": 0,
+    "HEK_all_at_least_80_percent": true,
+    "HeLa_all_at_least_80_percent": true
+  }
+}

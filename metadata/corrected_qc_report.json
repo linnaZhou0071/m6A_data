@@ -1,0 +1,38 @@
+{
+  "scope": "corrected_MANE_only_candidate_snapshot",
+  "branches": {
+    "intersection": {
+      "input_sites": 5646,
+      "cds_sites": 2758,
+      "effect_rows": 21160,
+      "excluded_mane_nonsynonymous_sites": 1832,
+      "retained_sites": 3814,
+      "newly_excluded_after_strand_correction": 261,
+      "retained_cds_without_mane_effect": 40,
+      "retained_with_nonmane_nonsynonymous_effect": 33,
+      "pegg_input_sites": 3814,
+      "unsupported_chrM_sites": [],
+      "default_retained_sites_with_guides": 3564,
+      "default_retained_sites_without_guides": 250,
+      "default_guide_rows_in_corrected_subset": 129128,
+      "custom_retained_sites_with_guides": 3564,
+      "custom_retained_sites_without_guides": 250,
+      "custom_guide_rows_in_corrected_subset": 248876
+    },
+    "union": {
+      "input_sites": 33041,
+      "cds_sites": 13279,
+      "effect_rows": 100065,
+      "excluded_mane_nonsynonymous_sites": 9697,
+      "retained_sites": 23344,
+      "newly_excluded_after_strand_correction": 1204,
+      "retained_cds_without_mane_effect": 262,
+      "retained_with_nonmane_nonsynonymous_effect": 215,
+      "pegg_input_sites": 23342,
+      "unsupported_chrM_sites": [
+        "chrM_16559_+",
+        "chrM_5795_-"
+      ]
+    }
+  }
+}
