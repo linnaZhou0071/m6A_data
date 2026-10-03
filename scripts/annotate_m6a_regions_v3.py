@@ -7,7 +7,7 @@ Usage:
   python annotate_m6a_regions_v3.py --gtf hg38.ncbiRefSeq.gtf.gz --verify FILE.csv
 
 Outputs per CSV:
-  <orig>.annotated_v3.csv  (原表 + genomic_feature)
+  <orig>.annotated_v3.csv  (input columns plus genomic_feature)
   tmpdir contains: sites.bed, CDS.bed, UTR.bed, intermediate files
 
 Requirements:

@@ -1,8 +1,8 @@
 # QC and publication boundaries
 
-**Current application scope (2026-10-02):** GitHub v0.3.0 is a public code/documentation snapshot under a new single-root public history; the corrected row-level dataset remains local and unpublished. No Zenodo deposit is planned for this application. The release gates below are an audit inventory for a possible future public dataset or mature workflow, not conditions for calling computational candidates validated reagents.
+**Current application scope (2026-10-02):** GitHub v0.3.1 is a public code/documentation snapshot; the corrected row-level dataset remains local and unpublished. No Zenodo deposit is planned for this application. The release gates below are an audit inventory for a possible future public dataset or mature workflow, not conditions for calling computational candidates validated reagents.
 
-Status key: **PASS** = independently checked on the current local snapshot; **PARTIAL** = some evidence exists but the acceptance criterion is not met; **OPEN** = not yet verified; **FAIL** = a known problem blocks the named claim. Ownership: **Agent** = code/data audit and documentation I can do locally; **Owner** = Yuling Zhou or other rights/scientific decision-maker; **Both** = agent prepares evidence, owner signs off.
+Status key: **PASS** = independently checked on the current local snapshot; **PARTIAL** = some evidence exists but the acceptance criterion is not met; **OPEN** = not yet verified; **FAIL** = a known problem blocks the named claim. Review roles: **Computational review** = scripted or documented code/data audit; **Researcher review** = Yuling Zhou or another rights/scientific decision-maker; **Joint review** = computational evidence followed by researcher sign-off.
 
 ## What has actually been checked
 
@@ -21,44 +21,44 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 
 ## Level A — gates before any public candidate-dataset release
 
-### A1. Define the claim and uncertainty labels — PARTIAL; Both
+### A1. Define the claim and uncertainty labels — PARTIAL; Joint review
 
 **Why:** “m6A site”, “protein-preserving edit”, “PEGG candidate”, and “validated screening guide” are not interchangeable. Overclaiming is a data-quality defect even if every CSV parses.
 
-**Do / pass:** Owner approved the scope statement: published cross-method measurements in specified samples; exploratory ≥80% mean rule; computational A→G/T→C candidates for future PE screening; no functional or editing validation. Final public wording still needs owner review. In every table/figure/README, label unknown CDS effects, transcript disagreements, absent designs, and whether counts mean sites, transcript-effect rows, or guide rows. Do not call the corrected 3,814 or historical 4,075 “safe/neutral” or the rank-1 extracts an experiment-ready library. Agent can revise labels and add machine-readable uncertainty columns after policy approval.
+**Do / pass:** Yuling Zhou approved the scope statement: published cross-method measurements in specified samples; exploratory ≥80% mean rule; computational A→G/T→C candidates for future PE screening; no functional or editing validation. Final public wording still needs researcher review. In every table/figure/README, label unknown CDS effects, transcript disagreements, absent designs, and whether counts mean sites, transcript-effect rows, or guide rows. Do not call the corrected 3,814 or historical 4,075 “safe/neutral” or the rank-1 extracts an experiment-ready library. Computational review can revise labels and add machine-readable uncertainty columns after policy approval.
 
-### A2. Source rights and split MIT/CC BY 4.0 boundary — OPEN for future data deposits; Owner with Agent inventory
+### A2. Source rights and split MIT/CC BY 4.0 boundary — OPEN for future data deposits; Researcher review with computational inventory
 
 **Why:** Derived CSVs reproduce source methylation values; MIT for original code and CC BY 4.0 for original documentation/figures cannot grant rights in SAC-seq/GLORI/eTAM-seq supplements or annotations. The corrected row-level dataset is not part of the public snapshot.
 
-**Do / pass:** For each workbook, GEO TXT, image, derived column and reference, record URL, accession/version, citation, original terms, whether redistribution/derivative-value publication is allowed, and decision. Keep PDFs, source workbooks/TXT and reference FASTA/GTF outside the public Git tree unless independently permitted. If a source restriction is unclear, publish metadata/code and a download/rebuild recipe rather than assuming permission for source-derived values. Owner (or institution) gives final rights approval. See [SOURCES.md](SOURCES.md), [Creative Commons FAQ](https://creativecommons.org/faq/) and the scoped [LICENSE](../LICENSE).
+**Do / pass:** For each workbook, GEO TXT, image, derived column and reference, record URL, accession/version, citation, original terms, whether redistribution/derivative-value publication is allowed, and decision. Keep PDFs, source workbooks/TXT and reference FASTA/GTF outside the public Git tree unless independently permitted. If a source restriction is unclear, publish metadata/code and a download/rebuild recipe rather than assuming permission for source-derived values. The researcher or institution gives final rights approval. See [SOURCES.md](SOURCES.md), [Creative Commons FAQ](https://creativecommons.org/faq/) and the scoped [LICENSE](../LICENSE).
 
-### A3. Public history replacement — owner-directed; verify remote after push; Both
+### A3. Historical file handling — completed for the current public tree; Joint review
 
-**Why:** The original public Git history contained two preliminary cross-group CSVs and `potential_SNP.xlsx`. The workbook is owner-created, but its SNP label is unsupported by genotype evidence. A clean single-root public commit removes these files from the reachable `main` history; it cannot remove clones, forks, cached views or copies fetched earlier. The previous commit hashes also change.
+**Why:** Preliminary cross-group CSVs and `potential_SNP.xlsx` were excluded from the current public tree. The workbook is researcher-created, but its SNP label is unsupported by genotype evidence. Earlier copies may remain outside the repository snapshot.
 
-**Do / pass:** The owner requested the history rewrite after the v0.2.0 review. Before any force update, confirm the exact new tree, that no current branch or tag points to old commits, and that the remote has not advanced unexpectedly. Afterward verify one root commit and zero tracked row-level data files, and avoid merging an old clone back into `main`. GitHub explains the [limits and side effects of history removal](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
+**Do / pass:** The current public `main` snapshot contains no tracked row-level data files. Before any future release, verify the exact file inventory and keep old local branches from reintroducing superseded files. GitHub documents the [limits of history removal](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
 
 
-### A4. Source identity, sample comparability and raw lineage — PARTIAL; Both
+### A4. Source identity, sample comparability and raw lineage — PARTIAL; Joint review
 
 **Why:** The HEK group combines a SAC worksheet labelled HEK293 with GLORI labelled HEK293T; biological replicates, protocol and coverage may differ. A merged coordinate alone does not make measurements directly comparable.
 
-**Do / pass:** Agent has made the source-to-column matrix and checked SAC, GLORI and eTAM values row-for-row. The source notes document sheet/replicate handling, coordinate origin and strand. The owner accepts the wording that HEK293 and HEK293T are grouped for analysis but not asserted to be identical samples. A reviewer must be able to trace each released measurement to a source record or an explicit exclusion reason; the fully executable importer is the stronger B1 gate.
+**Do / pass:** The source-to-column matrix is complete, and SAC, GLORI and eTAM values have been checked row-for-row. The source notes document sheet/replicate handling, coordinate origin and strand. Yuling Zhou accepts the wording that HEK293 and HEK293T are grouped for analysis but not asserted to be identical samples. A reviewer must be able to trace each released measurement to a source record or an explicit exclusion reason; the fully executable importer is the stronger B1 gate.
 
-### A5. Percentage, missingness and ≥80% rule — PARTIAL; Both
+### A5. Percentage, missingness and ≥80% rule — PARTIAL; Joint review
 
 **Why:** Means over available methods can privilege sites measured once; 80 versus >80 changes membership; missingness/coverage can dominate cross-method comparisons.
 
-**Do / pass:** Source values are range-checked by the source verifiers, and every group mean recomputes from the available method columns. Presence flags, unique IDs and coordinate fields now pass automated checks for every HEK/HeLa union row. Report per-site number of contributing methods, missingness, support/coverage and replicate evidence where available; stratify threshold counts by method support. The high sets pass the stored ≥80% check (38 HEK sites equal exactly 80). One-method support dominates the high sets: 26,162/27,623 HEK and 10,840/11,064 HeLa. Owner decides whether a minimum-support or replicate-confidence rule is needed; otherwise disclose it as a limitation.
+**Do / pass:** Source values are range-checked by the source verifiers, and every group mean recomputes from the available method columns. Presence flags, unique IDs and coordinate fields now pass automated checks for every HEK/HeLa union row. Report per-site number of contributing methods, missingness, support/coverage and replicate evidence where available; stratify threshold counts by method support. The high sets pass the stored ≥80% check (38 HEK sites equal exactly 80). One-method support dominates the high sets: 26,162/27,623 HEK and 10,840/11,064 HeLa. The researcher decides whether a minimum-support or replicate-confidence rule is needed; otherwise disclose it as a limitation.
 
-### A6. Coordinate, strand and reference validation — PARTIAL; Agent; Owner for target genotype
+### A6. Coordinate, strand and reference validation — PARTIAL; Computational review; Researcher review for target genotype
 
 **Why:** An off-by-one position, wrong genome build, or RNA/genomic strand inversion creates a guide for the wrong base even if set arithmetic is correct.
 
 **Do / pass:** Keep an explicit 1-based `chr_pos_RNAstrand` convention and a contig alias map; test representative positive/negative-strand and chromosome-edge sites against GRCh38. The historical REF check passed 28,621 inputs; the corrected check passed 27,156 inputs with zero mismatches. Every corrected CDS effect row is RNA-A and the input converter emits genomic A→G on RNA-positive and T→C on RNA-negative sites. All 33,041 high-methylation union sites also have the expected GRCh38 genomic A/T reference base. Motif/flanking-sequence and target-cell-genotype checks remain open. Before wet-lab use, confirm the intended cell-line genotype and structural variants; reference agreement alone is insufficient.
 
-### A7. File manifest, schema and integrity — PARTIAL; Agent
+### A7. File manifest, schema and integrity — PARTIAL; Computational review
 
 **Why:** Counts may stay unchanged while column definitions, missing-value encodings, units or a file's bytes change. A checksum command that ignores missing files can produce a misleading partial pass.
 
@@ -73,25 +73,25 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 
 ## Level B — required to call this a mature, reproducible workflow
 
-### B1. Raw-to-high-table reconstruction — PASS on selected local sources; clean-clone test remains B6; Agent, then Owner review
+### B1. Raw-to-high-table reconstruction — PASS on selected local sources; clean-clone test remains B6; Computational review, then researcher review
 
 **Why:** The original workbook/TXT-to-union, mean and threshold stage was previously unscripted. It is now reconstructed from the exact local source files; a new researcher still needs to obtain those excluded downloads.
 
 **Done / remain:** The non-overwriting importer checks duplicate source rows, reconstructs group means and ≥80% membership, and compares every key/value/flag to all four versioned tables; an exactly-80 fixture passes. The selected local source versions are documented. A clean-clone/download test and broader synthetic source fixtures remain B6 work; old files remain intact.
 
-### B2. Annotation and CDS-effect completeness — PASS for CDS coverage; PARTIAL for protein-neutral interpretation; Both
+### B2. Annotation and CDS-effect completeness — PASS for CDS coverage; PARTIAL for protein-neutral interpretation; Joint review
 
 **Why:** The historical effect tables missed 632 intersection and 2,496 union negative-strand CDS sites because codons were reversed twice. Corrected effects now cover every annotated CDS site. Coverage alone does not make a retained edit protein-neutral.
 
 **Done / remain:** The fixed script has plus/minus and exon-boundary tests; separately named effects contain no failed rows and all target RNA bases are A. The owner chose MANE-only exclusion. The site-fate ledgers explicitly mark retained CDS sites with no MANE effect (40 intersection, 262 union). Do not call those sites, or the entire retained set, universally protein-preserving.
 
-### B3. Transcript and MANE exclusion policy — PARTIAL (MANE-only chosen and implemented); Both
+### B3. Transcript and MANE exclusion policy — PARTIAL (MANE-only chosen and implemented); Joint review
 
 **Why:** The historical filter removes only recorded MANE Select nonsynonymous calls. After correction it leaves 33 retained intersection and 215 retained union sites with a nonsynonymous call on another transcript. A coding triplet itself changes even when the amino acid does not.
 
 **Done / remain:** The owner chose MANE-only exclusion; corrected filters and site-fate categories implement it, including no-MANE-effect and non-MANE disagreement flags. Confirm whether that is the final public scientific policy and do not describe retained edits as “not changing codon.”
 
-### B4. PEGG-input attrition and no-guide explanations — PASS for historical coverage; Agent
+### B4. PEGG-input attrition and no-guide explanations — PASS for historical coverage; Computational review
 
 **Why:** The corrected filter retains 23,344 union sites but the converter accepts 23,342; 250/3,814 corrected intersection inputs have no historical guide. The historical counts were 24,548→24,546 and 279/4,075. Without reasons, a reader cannot tell unsupported formats from PAM/RTT/RHA design failure.
 
@@ -103,13 +103,13 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 
 **Do / pass:** This release explicitly reuses historical guides and does **not** rerun PEGG, per owner decision. Record the observed parameter distributions and known custom call; label the other run `default-like`, not proven default. Exact software/version/argument provenance and sequence-level reproduction remain unverified and belong to a future mature-workflow version. Do not overwrite the historical full outputs. See [parameter audit](DESIGN_PARAMETERS.md).
 
-### B6. Automated tests, hard failures and clean-clone run — OPEN; Agent
+### B6. Automated tests, hard failures and clean-clone run — OPEN; Computational review
 
 **Why:** The historical `build_release.py` writes Boolean checks but does not currently fail when one is false. The corrected builder does fail on its checked invariants, and 13 versioned small-fixture tests pass in the local Python 3.9 environment and a clean export of the tracked v0.2.0 tree. CI, a fresh environment install and an end-to-end run with separately downloaded data remain absent. Local full-data success may depend on files intentionally omitted from Git.
 
 **Do / pass:** Plus/minus strand, exon boundaries, duplicate plotting keys, exactly-80 inclusion, transcript ID cleaning and `chrM` skipping now have tests. Still add missing-value, MANE multiple-row subtraction and rank-1 extraction fixtures. Make failed invariants produce a nonzero exit. From a fresh clone/environment, run documented steps with explicit downloaded inputs or a small fixture dataset; verify the file manifest and links. Mark full-data steps as requiring external downloads, not silently “reproducible” from the clone.
 
-### B7. Figures, schema stability and release freeze — PARTIAL (plot fixed; freeze pending); Agent, Owner approval
+### B7. Figures, schema stability and release freeze — PARTIAL (plot fixed; freeze pending); Computational review, researcher approval
 
 **Why:** A figure without its input table/script cannot be regenerated; reusing a filename for changed content breaks citations. Different filtered CSV serializations already exist.
 
@@ -117,13 +117,13 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 
 ## Level C — additional gates before calling any guide set screening-ready
 
-### C1. Guide/editor compatibility and sequence QC — OPEN; Both
+### C1. Guide/editor compatibility and sequence QC — OPEN; Joint review
 
 **Why:** PEGG's NGG PAM search and RHA minimum are generation constraints, not a complete quality filter. `PEGG2_Score`/`RF_Score` are predictions, not measured editing efficiencies.
 
-**Do / pass:** Owner specifies editor/pegRNA scaffold, PAM, delivery cell line, desired edit, acceptable bystanders and control strategy. Agent can screen candidate PAM status/disruption, PBS/RTT/RHA and nick geometry, polyT/restriction sites, sequence repeats, synthesis constraints, predicted efficiency and off-target candidates against the intended genome. Choose thresholds **before** selecting winners and retain failure reasons; validate genotype and editing in the target cells. No arbitrary threshold is applied to the current rank-1 extracts.
+**Do / pass:** The researcher specifies editor/pegRNA scaffold, PAM, delivery cell line, desired edit, acceptable bystanders and control strategy. Computational review can screen candidate PAM status/disruption, PBS/RTT/RHA and nick geometry, polyT/restriction sites, sequence repeats, synthesis constraints, predicted efficiency and off-target candidates against the intended genome. Choose thresholds **before** selecting winners and retain failure reasons; validate genotype and editing in the target cells. No arbitrary threshold is applied to the current rank-1 extracts.
 
-### C2. Library composition, controls and biological validation — OPEN; Owner-led
+### C2. Library composition, controls and biological validation — OPEN; Researcher-led
 
 **Why:** One ranked guide per site does not provide adequate redundancy, control distribution, or evidence that a phenotype is mediated by m6A rather than altered RNA sequence/protein/splicing.
 
@@ -132,6 +132,6 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 ## Current decision and ownership
 
 1. **Current application output:** public MIT-licensed code and CC BY 4.0-licensed original documentation/figures; the corrected row-level dataset stays local and unpublished. The selected guides are computational candidates, not validated screening reagents.
-2. **Public-history rewrite:** the owner requested a clean single-root public branch to remove preliminary CSVs and the historical workbook from reachable `main` history. This does not guarantee deletion of external clones or caches. Verify the remote after the force update and do not reintroduce old commits.
+2. **Historical files:** preliminary CSVs and the unsupported-SNP workbook are absent from the current public tree. Keep them out of future releases unless separately reviewed; copies outside this repository may still exist.
 3. **Future claims:** a public row-level dataset requires file-level rights review; a mature end-to-end workflow requires the remaining Level B work; a screening-ready library requires Level C and experiments.
 4. **Sign-off:** any force update to the public branch requires an exact file/tree review and the owner's explicit final approval. This document alone authorizes no push, Zenodo publication or DOI assignment.

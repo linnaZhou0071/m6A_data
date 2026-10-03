@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from predict_AtoG_coding_effects_v2 import (
+from predict_AtoG_coding_effects import (
     compute_coding_offset,
     genomic_bases_to_mrna_codon,
     offsets_to_genomic_coords,

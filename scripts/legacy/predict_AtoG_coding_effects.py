@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
-"""
-predict_AtoG_coding_effects.py
+"""Historical coding-effect implementation, retained only for provenance.
 
-用途:
-  对输入 CSV 中的位点（第一列 pos: chr_pos_strand），
-  找出落在 CDS 的那些位点，并判断“mRNA 上 A -> G”会否改变氨基酸。
+This superseded script predicts the amino-acid consequence of RNA A-to-G
+changes at CDS sites supplied in a CSV with a pos column. Its negative-strand
+handling is not the corrected analysis. Use scripts/predict_AtoG_coding_effects.py
+for current results.
 
-依赖:
-  - python3
-  - pandas
-  - bedtools, samtools 在 PATH 中（用于快速序列抽取）
-使用示例:
-  python predict_AtoG_coding_effects.py \
+Requires Python 3, pandas, bedtools and samtools on PATH.
+
+Historical invocation:
+  python scripts/legacy/predict_AtoG_coding_effects.py \
     --gtf hg38.ncbiRefSeq.gtf.gz \
     --fasta hg38.fa \
     HEK_HeLa_over80_intersection.csv \
@@ -100,7 +98,7 @@ def parse_pos_field(s):
     if s == '':
         return (None, None, None)
     
-    # 以 '_' 作为分隔符，提取染色体、位置和链信息
+    # Split the position ID into chromosome, position and strand.
     for sep in ['_', ':', '\t', ' ' , '-']:
         if sep in s:
             parts = s.split(sep)
@@ -131,7 +129,7 @@ def parse_pos_field(s):
     if chrom is None:
         return (None, None, None)
     
-    # 去除 'chr' 前缀
+    # Remove the UCSC chromosome prefix.
     if chrom.lower().startswith('chr'):
         chrom = chrom[3:]
     

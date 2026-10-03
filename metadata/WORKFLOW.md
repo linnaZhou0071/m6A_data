@@ -129,7 +129,7 @@ negative-strand codon a second time. For a negative-strand site, genomic
 coordinates returned by `offsets_to_genomic_coords` are already in
 transcript 5′→3′ order, so their genome bases must be **complemented**
 without another reversal. It also used to include opposite-strand CDS
-transcripts. The current [coding-effect script](../scripts/predict_AtoG_coding_effects_v2.py)
+transcripts. The current [coding-effect script](../scripts/predict_AtoG_coding_effects.py)
 corrects both issues and uses indexed FASTA access. Five focused strand/
 exon-boundary tests pass.
 
@@ -174,7 +174,7 @@ From the repository root, with the excluded reference files present:
 python -m unittest discover -s tests -v
 for branch in intersection union; do
   stem="HEK_HeLa_over80_${branch}"
-  python scripts/predict_AtoG_coding_effects_v2.py \
+  python scripts/predict_AtoG_coding_effects.py \
     --gtf hg38.ncbiRefSeq.gtf.gz --fasta GRCh38.fa --assume-cds \
     --out "data/reanalysis/${stem}_CDS.AtoG.effects.corrected.csv" \
     "data/intermediate/${stem}_CDS.v3fixed.csv"

@@ -1,24 +1,17 @@
 #!/usr/bin/env python3
-""" 
-predict_AtoG_coding_effects_v2.py
+"""Historical v2 coding-effect implementation, retained only for provenance.
 
-用途:
-  对输入 CSV 中的位点（第一列 pos: chr_pos_strand），
-  找出落在 CDS 的那些位点，并判断“mRNA 上 A -> G”会否改变氨基酸。
+This superseded script estimates amino-acid consequences of RNA A-to-G edits
+at CDS sites from a CSV with a pos column. The CSV/GTF use UCSC chromosome
+names such as chr10; the GRCh38 FASTA may use RefSeq names such as
+NC_000010.11. This script maps names before calling samtools faidx, but
+retains the earlier negative-strand codon-orientation error. Use
+scripts/predict_AtoG_coding_effects.py for corrected analyses.
 
-重要说明（你这次报错的根因）:
-  - 你的 CSV/GTF 使用的是 UCSC 风格染色体名（例如 chr10）
-  - 你的参考基因组 FASTA（GRCh38.fa）使用的是 NCBI RefSeq contig 名（例如 NC_000010.11）
-  - 直接 samtools faidx chr10:... 会找不到 contig
-  - 本脚本会在查询 FASTA 前，自动把 chrN/chrX/chrY/chrM 映射到 GRCh38 RefSeq contig（NC_0000xx.xx / NC_012920.1）
+Requires Python 3, pandas and samtools on PATH.
 
-依赖:
-  - python3
-  - pandas
-  - samtools 在 PATH 中（用于序列抽取）
-
-使用示例:
-  python predict_AtoG_coding_effects_v2.py \
+Historical invocation:
+  python scripts/legacy/predict_AtoG_coding_effects_v2_historical.py \
     --gtf hg38.ncbiRefSeq.gtf.gz \
     --fasta GRCh38.fa \
     --out HEK_HeLa_over80_intersection.AtoG.effects.csv \

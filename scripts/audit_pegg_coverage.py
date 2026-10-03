@@ -12,7 +12,7 @@ from pathlib import Path
 import pandas as pd
 import pysam
 
-from predict_AtoG_coding_effects_v2 import (
+from predict_AtoG_coding_effects import (
     build_refseq_base_index, load_fasta_contigs, resolve_fasta_contig, revcomp,
 )
 
