@@ -1,6 +1,6 @@
 # QC and publication boundaries
 
-**Current application scope (2026-10-02):** GitHub v0.3.1 is a public code/documentation snapshot; the corrected row-level dataset remains local and unpublished. No Zenodo deposit is planned for this application. The release gates below are an audit inventory for a possible future public dataset or mature workflow, not conditions for calling computational candidates validated reagents.
+**Current release status:** GitHub v0.3.1 is a public code/documentation snapshot; the corrected row-level dataset remains local and unpublished. No Zenodo deposit is currently planned. The release gates below are an audit inventory for a possible future public dataset or mature workflow, not conditions for calling computational candidates validated reagents.
 
 Status key: **PASS** = independently checked on the current local snapshot; **PARTIAL** = some evidence exists but the acceptance criterion is not met; **OPEN** = not yet verified; **FAIL** = a known problem blocks the named claim. Review roles: **Computational review** = scripted or documented code/data audit; **Researcher review** = Yuling Zhou or another rights/scientific decision-maker; **Joint review** = computational evidence followed by researcher sign-off.
 
@@ -68,7 +68,7 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 
 **Why:** The public code snapshot and aggregate QC counts are inspectable, but it does not contain the corrected site-level or full PEGG CSVs. A clone alone cannot reconstruct historical guides without excluded source/reference files and full historical outputs.
 
-**Do / pass:** Keep source citations, sample labels, field definitions and limitations public; label the corrected dataset unpublished and computational candidates unvalidated. If a future row-level deposit is chosen, review actual files and rights, provide a dictionary and hashes, preview the draft, and only then add its version-specific DOI. No DOI is required for the current application.
+**Do / pass:** Keep source citations, sample labels, field definitions and limitations public; label the corrected dataset unpublished and computational candidates unvalidated. If a future row-level deposit is chosen, review actual files and rights, provide a dictionary and hashes, preview the draft, and only then add its version-specific DOI. No dataset DOI exists for the current repository snapshot.
 
 
 ## Level B — required to call this a mature, reproducible workflow
@@ -131,7 +131,7 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 
 ## Current decision and ownership
 
-1. **Current application output:** public MIT-licensed code and CC BY 4.0-licensed original documentation/figures; the corrected row-level dataset stays local and unpublished. The selected guides are computational candidates, not validated screening reagents.
+1. **Current release output:** public MIT-licensed code and CC BY 4.0-licensed original documentation/figures; the corrected row-level dataset stays local and unpublished. The selected guides are computational candidates, not validated screening reagents.
 2. **Historical files:** preliminary CSVs and the unsupported-SNP workbook are absent from the current public tree. Keep them out of future releases unless separately reviewed; copies outside this repository may still exist.
 3. **Future claims:** a public row-level dataset requires file-level rights review; a mature end-to-end workflow requires the remaining Level B work; a screening-ready library requires Level C and experiments.
 4. **Sign-off:** any force update to the public branch requires an exact file/tree review and the owner's explicit final approval. This document alone authorizes no push, Zenodo publication or DOI assignment.

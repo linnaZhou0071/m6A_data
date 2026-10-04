@@ -59,7 +59,7 @@ The two locally generated files under data/zenodo_preview/ contain 19
 columns, one historical candidate guide per row, and no source
 methylation percentages or long genome-context strings. They remain
 local for a possible future rights-reviewed deposit; no public data
-archive or DOI is planned for the current application.
+archive or dataset DOI is currently planned.
 Original_Pos_ID encodes the selected GRCh38 genomic site and RNA
 strand, so this is still a source-derived coordinate selection.
 The inherited PEGG header Tumor_Seq_Allele2 names the edited DNA
