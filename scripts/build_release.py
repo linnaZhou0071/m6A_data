@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the local m6A tables and build small, reviewable release summaries.
+"""Audit the local m⁶A tables and build small, reviewable release summaries.
 
 Run from any directory: python scripts/build_release.py
 This script never changes source/intermediate CSVs or full PEGG outputs.

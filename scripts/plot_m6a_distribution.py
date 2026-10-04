@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Rebuild 10-percent m6A histograms from the versioned HEK/HeLa union CSVs.
+"""Rebuild 10-percent m⁶A histograms from the versioned HEK/HeLa union CSVs.
 
 Bins are [0,10), [10,20), ..., [80,90), [90,100]; 100 is included
 in the final bin. Run: python scripts/plot_m6a_distribution.py
-The original Prism project and JPEGs are historical and are not overwritten.
+This diagnostic plot/count export does not overwrite researcher-authored Prism/JPEG figures.
 """
 from pathlib import Path
 
@@ -57,8 +57,8 @@ def main() -> None:
                 "total_unique_sites": n_sites,
             })
     axes[-1].set_xticks(range(10), LABELS)
-    axes[-1].set_xlabel("Mean m6A level over available source measurements")
-    fig.suptitle("Distribution of curated single-base m6A measurements", fontsize=13)
+    axes[-1].set_xlabel("Mean m⁶A level over available source measurements")
+    fig.suptitle("Distribution of curated single-base m⁶A measurements", fontsize=13)
     fig.text(0.99, 0.005, "10% bins; final bin includes 100%. Groups are not identical cell-line labels.",
              ha="right", fontsize=8)
     FIGURES.mkdir(exist_ok=True)

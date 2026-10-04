@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assign coding consequences of RNA-strand A-to-G edits at m6A sites.
+"""Assign coding consequences of RNA-strand A-to-G edits at m⁶A sites.
 
 Input is a CSV whose first column, pos, contains IDs such as
 chr10_11462944_-. For each matching CDS transcript, the script reports

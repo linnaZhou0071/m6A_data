@@ -1,49 +1,97 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 720" role="img" aria-labelledby="title desc">
-<title id="title">m6A dataset curation and candidate pegRNA design workflow</title>
-<desc id="desc">Published SAC-seq, GLORI and eTAM-seq data lead to HEK and HeLa high methylation site tables, then intersection and union sets, MANE effect exclusion, PEGG inputs, and intersection pegRNA candidates. Counts distinguish sites from effect and guide rows.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1990" role="img" aria-labelledby="title desc">
+<title id="title">From published m⁶A sites to computational PEGG designs</title>
+<desc id="desc">Goal 1 curates published m⁶A site calls, applies an exploratory mean methylation threshold of at least 80 percent, and forms HEK–HeLa intersection and union sets. Goal 2 annotates genomic regions using the hg38 RefSeq GTF on the NCBI GRCh38 assembly, maps CDS sites to same-strand transcripts, checks RNA bases, predicts amino-acid changes, matches nonsynonymous site–transcript pairs to MANE Select, deduplicates site IDs before exclusion, and runs PEGG on the intersection input. The final box explains a later negative-strand coding-effect correction and why PEGG was not rerun.</desc>
 <style>
-  .bg{fill:#f6f8fb}.card{fill:#fff;stroke:#bcc9d7;stroke-width:2}.blue{fill:#e9f2ff;stroke:#3984c8;stroke-width:2}.green{fill:#e9f8f0;stroke:#2d9b67;stroke-width:2}.amber{fill:#fff5e5;stroke:#c4801d;stroke-width:2}.muted{fill:#40536a}.strong{fill:#142638}.line{stroke:#72869a;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dash{stroke:#98a7b7;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#arrow)}text{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#142638}.label{font-size:13px;letter-spacing:1px;font-weight:700}.big{font-size:25px;font-weight:700}.small{font-size:14px}.note{font-size:13px}
+  text {font-family: Arial, Helvetica, sans-serif; fill:#173047}
+  .background {fill:#f8fafc}
+  .goal {fill:#173d61}
+  .goaltext {fill:white;font-size:27px;font-weight:700}
+  .card {fill:white;stroke:#b9cad8;stroke-width:2}
+  .blue {fill:#eff6ff;stroke:#4d8bc2;stroke-width:2}
+  .green {fill:#edf8f2;stroke:#3a9b6d;stroke-width:2}
+  .amber {fill:#fff7e9;stroke:#bd853b;stroke-width:2}
+  .title {font-size:34px;font-weight:700}
+  .step {font-size:23px;font-weight:700}
+  .body {font-size:21px}
+  .small {font-size:18px}
+  .note {font-size:17px;fill:#41576a}
+  .arrow {stroke:#67849a;stroke-width:3;fill:none;marker-end:url(#head)}
+  .rule {stroke:#cbd7e2;stroke-width:2}
 </style>
-<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#72869a"/></marker></defs>
-<rect class="bg" width="1160" height="720"/>
-<text x="34" y="41" class="big">From single-base m6A evidence to prime-editing candidates</text>
-<text x="34" y="67" class="small muted">Goal 1 — curate published site calls</text>
-<text x="610" y="67" class="small muted">Goal 2 — propose PE-screening candidates</text>
-<rect class="card" x="35" y="92" width="300" height="90" rx="12"/>
-<text x="56" y="121" class="label">PUBLISHED INPUTS</text>
-<text x="56" y="149">SAC-seq · GLORI · eTAM-seq</text>
-<path class="line" d="M186 182 V210"/>
-<rect class="blue" x="35" y="212" width="300" height="112" rx="12"/>
-<text x="56" y="240" class="label">CURATE BY GROUP</text>
-<text x="56" y="270">HEK ≥80%: 27,623 sites</text>
-<text x="56" y="298">HeLa ≥80%: 11,064 sites</text>
-<path class="line" d="M335 268 H372"/>
-<rect class="blue" x="375" y="212" width="330" height="112" rx="12"/>
-<text x="396" y="240" class="label">MATCH EXACT POSITION + RNA STRAND</text>
-<text x="396" y="270">Intersection: 5,646 sites</text>
-<text x="396" y="298">Union: 33,041 sites</text>
-<path class="line" d="M540 324 V355"/>
-<rect class="amber" x="375" y="358" width="330" height="127" rx="12"/>
-<text x="396" y="386" class="label">CORRECTED MANE-ONLY FILTER</text>
-<text x="396" y="417">Intersection: 3,814 remain</text>
-<text x="396" y="445">Union: 23,344 remain</text>
-<text x="396" y="469" class="note muted">1,832 / 9,697 sites excluded</text>
-<path class="line" d="M705 423 H745"/>
-<rect class="green" x="748" y="358" width="376" height="127" rx="12"/>
-<text x="769" y="386" class="label">CORRECTED GENOMIC-PLUS INPUT</text>
-<text x="769" y="417">Intersection: 3,814 variants</text>
-<text x="769" y="445">Union: 23,342 variants</text>
-<text x="769" y="469" class="note muted">RNA +: A→G · RNA −: T→C · 2 chrM skipped</text>
-<path class="dash" d="M936 485 V520"/>
-<rect class="green" x="748" y="523" width="376" height="128" rx="12"/>
-<text x="769" y="551" class="label">HISTORICAL PEGG SUBSET</text>
-<text x="769" y="580">3,564 retained sites with ≥1 guide</text>
-<text x="769" y="606" class="small">129,128 / 248,876 pegRNA rows</text>
-<text x="769" y="632" class="note muted">250 retained inputs without a design</text>
-<rect class="card" x="35" y="533" width="630" height="118" rx="12"/>
-<text x="57" y="562" class="label">IMPORTANT INTERPRETATION</text>
-<text x="57" y="591" class="small">MANE-only retention is not proof of protein safety in all isoforms.</text>
-<text x="57" y="617" class="small">Guides are filtered historical designs, not a new PEGG run.</text>
-<path class="dash" d="M540 485 V532"/>
-<text x="35" y="691" class="note muted">Counts are unique sites unless labeled guide rows. Historical full outputs remain local; corrected-filter subsets are staged for Zenodo review.</text>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#67849a"/></marker></defs>
+<rect class="background" width="1240" height="1990"/>
+<text x="45" y="55" class="title">From m⁶A measurements to PE-screening candidates</text>
+<text x="45" y="88" class="note">Curate single-base calls, evaluate coding effects, then nominate computational pegRNAs.</text>
+
+<rect class="goal" x="45" y="115" width="1150" height="56" rx="12"/>
+<text x="67" y="152" class="goaltext">GOAL 1  Curate published single-base m⁶A site calls</text>
+<rect class="card" x="45" y="198" width="535" height="152" rx="14"/>
+<text x="68" y="234" class="step">1  Published measurements</text>
+<text x="68" y="272" class="body">SAC-seq: HEK293 and HeLa</text>
+<text x="68" y="304" class="body">GLORI: HEK293T</text>
+<text x="68" y="336" class="body">eTAM-seq: HeLa</text>
+<path class="arrow" d="M581 274 H647"/>
+<rect class="blue" x="660" y="198" width="535" height="152" rx="14"/>
+<text x="683" y="234" class="step">2  Group means and threshold</text>
+<text x="683" y="272" class="body">Mean over available methods ≥80%</text>
+<text x="683" y="304" class="body">HEK group: 27,623 sites</text>
+<text x="683" y="336" class="body">HeLa group: 11,064 sites</text>
+<path class="arrow" d="M927 350 V385"/>
+<rect class="blue" x="45" y="390" width="1150" height="130" rx="14"/>
+<text x="68" y="426" class="step">3  Form the HEK–HeLa intersection and union</text>
+<text x="68" y="463" class="body">Combine the two ≥80% group sets.</text>
+<text x="68" y="495" class="body">Intersection: 5,646 sites   •   Union: 33,041 sites</text>
+<path class="arrow" d="M620 520 V551"/>
+
+<rect class="goal" x="45" y="556" width="1150" height="56" rx="12"/>
+<text x="67" y="593" class="goaltext">GOAL 2  Assess coding effects and design candidate pegRNAs</text>
+<path class="arrow" d="M620 612 V636"/>
+<rect class="amber" x="45" y="642" width="1150" height="128" rx="14"/>
+<text x="68" y="679" class="step">4  Annotate genomic regions</text>
+<text x="68" y="716" class="body">Classify CDS / UTR / other using hg38.ncbiRefSeq.gtf.gz (UCSC).</text>
+<text x="68" y="751" class="small">CDS sites: 2,758 intersection   •   13,279 union</text>
+<path class="arrow" d="M620 770 V799"/>
+
+<rect class="amber" x="45" y="805" width="1150" height="155" rx="14"/>
+<text x="68" y="842" class="step">5  Map CDS sites to transcripts; check RNA base</text>
+<text x="68" y="879" class="body">Transcript models: hg38.ncbiRefSeq.gtf.gz (UCSC).</text>
+<text x="68" y="913" class="body">Match exact site ID and RNA strand; set aside non-A mappings.</text>
+<text x="68" y="944" class="small">One CDS site may map to several transcripts, producing multiple rows.</text>
+<path class="arrow" d="M620 960 V989"/>
+
+<rect class="amber" x="45" y="995" width="1150" height="136" rx="14"/>
+<text x="68" y="1032" class="step">6  Predict the amino-acid effect of RNA A→G</text>
+<text x="68" y="1069" class="body">Classify each RNA-A edit as synonymous or nonsynonymous.</text>
+<text x="68" y="1104" class="small">Sequence: GRCh38.fa, from GCF_000001405.26_GRCh38_genomic.fna.gz.</text>
+<path class="arrow" d="M620 1131 V1160"/>
+
+<rect class="amber" x="45" y="1166" width="1150" height="137" rx="14"/>
+<text x="68" y="1203" class="step">7  Match nonsynonymous effects to MANE Select v1.5</text>
+<text x="68" y="1240" class="body">MANE Select: matched NCBI/Ensembl representative transcript per locus.</text>
+<text x="68" y="1275" class="small">Purpose: flag protein-changing edits in representative isoforms (1,571 / 8,507 pairs).</text>
+<path class="arrow" d="M620 1303 V1332"/>
+
+<rect class="amber" x="45" y="1338" width="1150" height="162" rx="14"/>
+<text x="68" y="1375" class="step">8  Deduplicate site IDs, then exclude flagged sites</text>
+<text x="68" y="1412" class="body">Intersection: 5,646 − 1,571 = 4,075 retained sites.</text>
+<text x="68" y="1446" class="body">Union: 33,041 − 8,493 = 24,548 retained sites.</text>
+<text x="68" y="1481" class="small">One union site contributes 15 of the 8,507 qualifying transcript rows.</text>
+<path class="arrow" d="M620 1500 V1529"/>
+
+<rect class="green" x="45" y="1535" width="1150" height="187" rx="14"/>
+<text x="68" y="1572" class="step">9  Run PEGG on the intersection input</text>
+<text x="68" y="1609" class="body">4,075 sites entered PEGG; 3,796 sites received at least one guide.</text>
+<text x="68" y="1643" class="body">Two runs produced 136,868 default-like / 264,104 custom pegRNA rows.</text>
+<text x="68" y="1676" class="small">Genome input: GCF_000001405.26_GRCh38_genomic.fna.gz (NCBI).</text>
+<text x="68" y="1704" class="small">Union: 24,546 inputs prepared after two chrM skips; no union-wide design run.</text>
+
+<path class="rule" d="M45 1744 H1195"/>
+<rect class="green" x="45" y="1762" width="1150" height="154" rx="14"/>
+<text x="68" y="1799" class="step">CORRECTION  Earlier negative-strand codon-orientation error</text>
+<text x="68" y="1836" class="body">Recomputed MANE exclusions: 1,832 / 9,697 sites; 3,814 / 23,344 remain.</text>
+<text x="68" y="1870" class="body">PEGG was not rerun; only existing intersection guides were reused.</text>
+<text x="68" y="1898" class="small">Current guide subsets: 129,128 default-like / 248,876 custom rows.</text>
+
+<text x="45" y="1950" class="note">Counts are intersection / union unless labelled. A site, a site–transcript effect and a pegRNA are different counting units.</text>
+<text x="45" y="1976" class="note">The candidates are computational, not validated screening reagents. MANE-only does not establish protein neutrality in every isoform.</text>
 </svg>

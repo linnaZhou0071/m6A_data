@@ -2,7 +2,7 @@
 
 | Local historical label | Source and exact selection | Primary citation |
 | --- | --- | --- |
-| `file1_s23` (HEK) | `SAC-seq_data.xlsx`, sheets 2 “HEK293 polyA” and 3 “HEK293 ribo-” | [Hu et al., m6A-SAC-seq](https://doi.org/10.1038/s41587-022-01243-z) |
+| `file1_s23` (HEK) | `SAC-seq_data.xlsx`, sheets 2 “HEK293 polyA” and 3 “HEK293 ribo-” | [Hu et al., m⁶A-SAC-seq](https://doi.org/10.1038/s41587-022-01243-z) |
 | `file1_sheet1` (HeLa) | Same workbook, sheet 1 “HeLa polyA” | [Hu et al.](https://doi.org/10.1038/s41587-022-01243-z) |
 | `file2` (HEK) | `GLORI_HEK293T_mRNA.xlsx`, first worksheet | [Liu et al., GLORI](https://doi.org/10.1038/s41587-022-01487-9) |
 | `file3` (HeLa) | GEO GSE211303 file `GSE211303_hela.polya.wt.ftom.ftop.rep1.deep.hits.txt` | [Xiao et al., eTAM-seq](https://doi.org/10.1038/s41587-022-01587-6); [GEO series](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211303) |
@@ -16,7 +16,7 @@ source.
 
 The SAC-seq sheet label is HEK293, whereas GLORI is HEK293T. GLORI
 [Supplementary Fig. 6a](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41587-022-01487-9/MediaObjects/41587_2022_1487_MOESM1_ESM.pdf)
-compares GLORI with m6A-SAC-seq in HEK293T. We therefore allow
+compares GLORI with m⁶A-SAC-seq in HEK293T. We therefore allow
 cross-method comparison while reporting the source workbook label
 unchanged. This is a comparability limitation, not proof of identical
 sample provenance.
@@ -72,7 +72,7 @@ download link is not itself a CC BY license for every underlying record.
 | eTAM source TXT and reference FASTA/GTF | **Do not upload copies**; link to [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211303), NCBI/UCSC and MANE release | [NCBI policy](https://www.ncbi.nlm.nih.gov/home/about/policies/) imposes no NCBI restriction on molecular-data distribution but cannot transfer or certify a submitter's rights; reference files have their own provenance. |
 | Union/high/intersection/filtered CSVs with source methylation values | **Conditional; hold public upload pending owner/institution review or permission** | These tables copy or numerically transform many source values. Attribution is necessary but does not alone settle republication of bulk supplement-derived data. If not cleared, publish column definitions, code, hashes and source-download instructions; deposit only a permitted subset or no source-derived values. |
 | Site-fate, corrected effect and guide tables | **Conditional; review source-derived columns and genome-sequence content** | New analysis is original, but some rows copy source coordinates/measurements or reference sequence. A narrowly selected guide table may be easier to justify than wholesale supplement mirrors, but no blanket permission is inferred. |
-| Historical Prism/JPEG and `potential_SNP.xlsx` | Keep local until content/history review; do not feature as current outputs | Prism HEK histogram is stale; workbook's historical `SNP` label is unsupported by genotype evidence. |
+| Corrected researcher-authored Prism JPEGs; local Prism project; `potential_SNP.xlsx` | Publish only the two verified JPEG exports; keep the editable Prism project and historical workbook local | The revised HEK ten-bin table matches the current union counts (186,249); its internal column label `HEK293T` is stale, but the export is labelled `HEK`. The workbook’s historical `SNP` label is unsupported by genotype evidence. |
 
 For any future row-level data deposit, the owner should confirm the
 institutional rights interpretation and exact file list before publication.

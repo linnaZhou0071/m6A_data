@@ -79,6 +79,8 @@ MANE.GRCh38.*.gtf.gz
 
 /pegg-*.whl
 
-# Historical plot project and superseded JPEGs stay local for audit
-/m6A项目作图.pzfx
+# Local Prism project and older exports stay outside Git; verified researcher exports are included.
+/m6A_plotting.pzfx
 /figures/*.jpg
+!/figures/m6a_distribution_hek_prism.jpg
+!/figures/m6a_distribution_hela_prism.jpg

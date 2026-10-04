@@ -1,4 +1,28 @@
-# What the historical files and scripts actually do
+# Analysis workflow, initial outputs and corrected reanalysis
+
+The nine numbered diagram steps show the analysis sequence: curated
+measurements → exploratory ≥80% sets → intersection/union → region
+annotation → same-strand transcript mapping and RNA-A check → amino-acid
+prediction → comparison with MANE Select v1.5 → unique-site exclusion →
+PEGG design on the intersection input. The final diagram box records a
+later correction to the negative-strand codon calculation. The corrected
+coding effects and MANE exclusions were recomputed, but PEGG was not
+rerun; previously designed guides were reused for retained sites.
+
+The site ID already contains chromosome, 1-based coordinate and RNA strand.
+The set operation first forms the intersection/union. Region annotation
+then classifies CDS/UTR/other without predicting amino-acid effects. For
+CDS sites, a separate step maps same-strand transcripts, compares complete
+site IDs and checks the mapped RNA base. The historical non-A separation
+was record-level: another transcript record for the same site could remain.
+
+The reference roles are [listed with versions and hashes](REFERENCE_FILES.md):
+steps 4–5 read `hg38.ncbiRefSeq.gtf.gz` for regions and transcript models;
+step 6 reads `GRCh38.fa`, a decompressed copy of the NCBI
+`GCF_000001405.26_GRCh38_genomic.fna.gz` sequence, for codon bases;
+step 7 reads `MANE.GRCh38.v1.5.refseq_genomic.gtf.gz`; and step 9 uses
+the compressed NCBI GCF FASTA as PEGG's genome input. The GCF FASTA is
+**not** the file that assigns CDS/UTR labels in step 4.
 
 ## High-methylation sets to cross-group intersection/union
 
@@ -41,18 +65,35 @@ the **full** cross-group site table, not only its CDS subset. First,
 the CDS effect file assesses site–transcript pairs; then
 `filter_mane_nonsynonymous.py` selects effect rows labelled
 `nonsynonymous` whose transcript is in the MANE Select GTF.
+[MANE Select](https://www.ncbi.nlm.nih.gov/refseq/MANE/) provides a
+matched NCBI/Ensembl representative transcript at each locus. Using
+release 1.5 defines a consistent primary coding reference for this
+screen; it does not certify every alternative isoform as neutral.
 `filter_non_mane_nonsynonymous.py` collects unique `pos` values from
 those rows and removes those sites from the full intersection/union
 table. The precise observed transitions are:
 
-| Branch | Full sites | MANE nonsynonymous effect rows | Unique sites removed | Retained |
-| --- | ---: | ---: | ---: | ---: |
-| Intersection | 5,646 | 1,571 | 1,571 | 4,075 |
-| Union | 33,041 | 8,507 | 8,493 | 24,548 |
+| Branch | Full sites | MANE nonsynonymous effect rows | Distinct transcript IDs | Unique sites removed | Retained sites |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Intersection | 5,646 | 1,571 | 1,005 | 1,571 | 4,075 |
+| Union | 33,041 | 8,507 | 3,968 | 8,493 | 24,548 |
 
-Thus 8,507 is a count of transcript-effect **rows**, not 8,507
-different union sites. The 14 excess rows arise from multiple
-qualifying rows for some sites. The filter keeps all UTR and
+The unit changes at the mapping step: the original table has **one row
+per site**, whereas the CDS effect table has **one row per site–transcript
+mapping**. A site may appear in several effect rows, and a transcript may
+appear for several sites. Therefore 8,507 is neither 8,507 unique
+transcripts nor 8,507 unique sites. The filter implements:
+
+```python
+excluded_sites = set(mane_nonsyn_rows['pos'].unique())
+filtered_sites = original_sites[~original_sites['pos'].isin(excluded_sites)]
+```
+
+For the historical union, the calculation is 33,041 − 8,493 = 24,548;
+for the intersection, 5,646 − 1,571 = 4,075. One union site,
+`chr5_141009819_+`, accounts for 15 rows; the 14 extra rows are not 14
+extra sites. The historical MANE-filtered CSVs were audited locally for
+these row, transcript-ID and site counts. The filter keeps all UTR and
 `other` sites: the retained intersection is 2,570 UTR, 318 other,
 and 1,187 CDS. It also retains sites that lack an effect record.
 
@@ -69,7 +110,7 @@ carries the original ID as `Original_Pos_ID`. It does not perform
 a new coding-effect test. On RNA `+` sites, the genomic plus-strand
 alleles are `A→G` (2,047 intersection rows); on RNA `−` sites,
 the equivalent plus-strand genomic alleles are `T→C` (2,028 rows).
-This is what the note “全部转变成正链” means: representing edits in
+The laboratory note about converting everything to the positive strand means representing edits in
 the reference genome's plus-strand coordinates. It does **not** turn
 every site into genomic `A→G`, and the original RNA strand remains
 recoverable from `Original_Pos_ID`.
@@ -120,7 +161,7 @@ PY
 
 Expected counts: `8507`, `8493`, and one repeated position with
 `15` rows. The transcript IDs can be inspected in the source CSV;
-their multiplicity is not 15 independent m6A measurements.
+their multiplicity is not 15 independent m⁶A measurements.
 
 ## Corrected reanalysis (2026-10-02)
 
@@ -133,13 +174,21 @@ transcripts. The current [coding-effect script](../scripts/predict_AtoG_coding_e
 corrects both issues and uses indexed FASTA access. Five focused strand/
 exon-boundary tests pass.
 
-The locally retained historical workbook `potential_SNP.xlsx` has 635
-intersection and 2,522 union unique positions. It is predominantly
-negative-strand coding-effect rows once classified as `is_mRNA_A=False`;
-it includes the 632/2,496 CDS sites missing from the historical effect
-CSV files. That classification error is **not** evidence that any site
-is a biological SNP. Genotyping the target cell line remains future work.
-The historical workbook and effect files have not been overwritten.
+Yuling Zhou recalls using the hg38 transcript mapping to set aside
+rows whose inferred transcript RNA base was not A and saving them as
+`potential_SNP.xlsx`. The locally retained workbook has 635 intersection
+and 2,522 union unique positions; 635 and 2,521 respectively are on the
+negative RNA strand. It includes 632/2,496 CDS sites absent from the old
+effect CSVs. The other 3/26 workbook sites also occur in the old effect
+CSVs, demonstrating that the old separation applied to site–transcript
+records rather than automatically removing each whole site. This was an
+intentional QC separation based on the old non-A flags, but those flags
+were largely caused by the old
+negative-strand codon-orientation error, not by observed genotypes.
+The workbook is **not** evidence that any site is a biological SNP.
+The historical workbook and effect files have not been overwritten;
+genotyping the target cell line remains future work. See the
+[site–transcript audit](POTENTIAL_SNP_AUDIT.md).
 Specifically, `chr10_11462944_-` appears in that workbook with genomic
 bases `TGA` at transcript-ordered coordinates
 `11462944;11462943;11462942`: the historical RNA codon is `TCA`
@@ -213,17 +262,30 @@ experimental screen.
 
 ## Distribution-plot provenance
 
-The original Prism project `m6A项目作图.pzfx` and JPEGs are retained
-as historical artifacts. Its HEK manually entered histogram counts
-sum to 186,803, while the current HEK union contains 186,249 sites.
-The current HeLa Prism histogram agrees with the HeLa union. Use
-`python scripts/plot_m6a_distribution.py` to rebuild
-[the corrected SVG](../figures/m6a_distribution_corrected.svg),
-PNG and [bin-count CSV](../figures/m6a_distribution_counts.csv)
-from the versioned union CSVs. Bins are [0,10), ..., [80,90),
-[90,100]; 100% is included in the final bin. The current HEK counts
-sum to 186,249, HeLa to 45,944. The old HEK JPEG should not be reused
-as if it represents the current table.
+The locally updated Prism project `m6A_plotting.pzfx` contains 186,249
+raw HEK values and 45,944 raw HeLa values. Its saved HEK ten-bin table
+now contains 1,437, 37,302, 31,521, 24,126, 19,449, 17,196, 14,307,
+13,288, 12,963 and 14,660 sites: total **186,249**, matching the
+[union-derived count table](../figures/m6a_distribution_counts.csv) in
+every bin. The revised researcher-authored
+[HEK](../figures/m6a_distribution_hek_prism.jpg) and
+[HeLa](../figures/m6a_distribution_hela_prism.jpg) JPEGs are featured in
+the README. The HEK JPEG title is “HEK”, correctly describing the
+mixed HEK293/HEK293T analysis group; an internal Prism table-column
+title still reads `HEK293T` and should not be interpreted as the sample
+label for the combined distribution.
+
+Run `python scripts/plot_m6a_distribution.py` to rebuild the diagnostic
+[SVG](../figures/m6a_distribution_corrected.svg), PNG and
+[bin-count CSV](../figures/m6a_distribution_counts.csv) from the
+versioned union CSVs. Bins are [0,10), ..., [80,90), [90,100], with
+100% in the final bin. The current union-based HEK counts sum to 186,249
+and HeLa to 45,944. Histogramming the Prism HEK raw values directly previously placed one
+boundary value in a different 40–50%/50–60% bin: a union mean stored as
+49.99999999999999 displays as 50 in Prism. The corrected saved ten-bin
+table follows the union-CSV bin convention and matches every published
+count. This is a floating-point bin-boundary issue, not a site-count
+difference.
 
 The source-to-union step is now reconstructed by
 `python scripts/rebuild_source_unions.py`: using the exact cited

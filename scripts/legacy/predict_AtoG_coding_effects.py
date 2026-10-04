@@ -314,7 +314,7 @@ def main():
             # cod_offset - codon_start_offset gives position inside codon (0-based)
             pos_in_codon = cod_offset - codon_start_offset
             # but pos_in_codon is relative to transcript order; for '-' strand the mapping handled above
-            # get the current base in mRNA (should be 'A' for m6A)
+            # get the current base in mRNA (should be 'A' for m⁶A)
             current_base = mrna_codon_for_translate[pos_in_codon]
             is_mrna_A = (current_base.upper() == 'A')
             # simulate mutation mRNA A->G (if current base is A)

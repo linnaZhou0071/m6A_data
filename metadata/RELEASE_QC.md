@@ -11,7 +11,7 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 - [Source-to-union rebuilder](../scripts/rebuild_source_unions.py) recreated both union and ≥80% tables from the cited SAC/GLORI/eTAM inputs and matched all positions, values and flags (186,249/27,623 HEK and 45,944/11,064 HeLa rows) without overwriting them.
 - [SAC/GLORI source verifier](../scripts/verify_sac_glori_sources.py) matched all 28,891 SAC HEK, 10,892 SAC HeLa and 170,240 GLORI positions/values to their union columns (1e-9 percentage-point tolerance for float serialization); all 186,249 HEK and 45,944 HeLa group means also recompute. Of the ≥80% sites, 26,162 HEK and 10,840 HeLa values have only one supporting method.
 - The local PEGG coverage audit explains every one of the 279 historical no-guide sites under each parameter set and exactly matches observed presence/absence. Corrected-filter subsets of historical output contain 129,128/248,876 guide rows covering 3,564 retained intersection sites. The original full outputs remain untouched; the lean Zenodo preview has the same row/site counts without methylation values.
-- [Corrected distribution counts](../figures/m6a_distribution_counts.csv) sum to the current union totals; the historical Prism HEK manual histogram sums to 186,803 and must not be used as the current 186,249-site plot.
+- [Union-derived distribution counts](../figures/m6a_distribution_counts.csv) sum to current totals. The updated local Prism project’s saved HEK ten-bin table matches all ten union-derived counts and totals 186,249; the corrected researcher-authored [HEK](../figures/m6a_distribution_hek_prism.jpg) and [HeLa](../figures/m6a_distribution_hela_prism.jpg) JPEGs are now the featured figures. Its internal HEK table column still says `HEK293T`; the JPEG and README use the broader `HEK` group label.
 - [eTAM source verification](../scripts/verify_etam_source.py) was rerun read-only on 2026-10-02: 40,096 source rows = 40,096 unique HeLa `m6a_file3` records; zero missing, extra, or unequal methylation values. This verifies the selected TXT-to-union mapping, **not** the entire raw-to-union pipeline.
 - [Reference-allele verification](../scripts/verify_reference_alleles.py) was rerun read-only on 2026-10-01: zero GRCh38 REF mismatches across 4,075 intersection and 24,546 union PEGG inputs. This does **not** prove the intended cell line carries that allele or that editing is feasible.
 - The two union `chrM` skips persist in the corrected input. Historically, 8,507 union MANE-nonsynonymous effect rows reduced to 8,493 distinct removed sites; these are **not** the corrected counts (9,697 excluded sites). The observed historical RTT/PBS/minimum-RHA distributions are recorded in [design parameters](DESIGN_PARAMETERS.md).
@@ -23,7 +23,7 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 
 ### A1. Define the claim and uncertainty labels — PARTIAL; Joint review
 
-**Why:** “m6A site”, “protein-preserving edit”, “PEGG candidate”, and “validated screening guide” are not interchangeable. Overclaiming is a data-quality defect even if every CSV parses.
+**Why:** “m⁶A site”, “protein-preserving edit”, “PEGG candidate”, and “validated screening guide” are not interchangeable. Overclaiming is a data-quality defect even if every CSV parses.
 
 **Do / pass:** Yuling Zhou approved the scope statement: published cross-method measurements in specified samples; exploratory ≥80% mean rule; computational A→G/T→C candidates for future PE screening; no functional or editing validation. Final public wording still needs researcher review. In every table/figure/README, label unknown CDS effects, transcript disagreements, absent designs, and whether counts mean sites, transcript-effect rows, or guide rows. Do not call the corrected 3,814 or historical 4,075 “safe/neutral” or the rank-1 extracts an experiment-ready library. Computational review can revise labels and add machine-readable uncertainty columns after policy approval.
 
@@ -113,7 +113,7 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 
 **Why:** A figure without its input table/script cannot be regenerated; reusing a filename for changed content breaks citations. Different filtered CSV serializations already exist.
 
-**Do / pass:** The corrected distribution figure has a regeneration script and count CSV with explicit bins/denominators; historical Prism/JPEG outputs remain marked legacy. Document or remove any other original plots before release. Review the data dictionary and decide which large intermediate tables are essential to review versus archival. Freeze a versioned schema, regenerate checksums after **all** content changes, run a final diff and independent spot checks, then tag a release and archive its exact bytes. No tag/DOI has yet been made.
+**Do / pass:** The diagnostic distribution figure has a regeneration script and count CSV with explicit bins/denominators; the corrected researcher-authored Prism JPEGs are now featured and their saved bins match the count CSV. Document or remove any other original plots before release. Review the data dictionary and decide which large intermediate tables are essential to review versus archival. Freeze a versioned schema, regenerate checksums after **all** content changes, run a final diff and independent spot checks, then tag a release and archive its exact bytes. No tag/DOI has yet been made.
 
 ## Level C — additional gates before calling any guide set screening-ready
 
@@ -125,9 +125,9 @@ Status key: **PASS** = independently checked on the current local snapshot; **PA
 
 ### C2. Library composition, controls and biological validation — OPEN; Researcher-led
 
-**Why:** One ranked guide per site does not provide adequate redundancy, control distribution, or evidence that a phenotype is mediated by m6A rather than altered RNA sequence/protein/splicing.
+**Why:** One ranked guide per site does not provide adequate redundancy, control distribution, or evidence that a phenotype is mediated by m⁶A rather than altered RNA sequence/protein/splicing.
 
-**Do / pass:** Plan multiple independent designs per target when feasible, non-targeting and positive/negative controls, library representation and sequencing QC, and an assay-specific power/replicate plan. Experimentally measure edit rates, m6A changes, protein/splicing and phenotype with orthogonal confirmation. Motif-disruption alternatives for nonsynonymous A→G sites need their own coding/transcript/motif analysis. These are **not** prerequisites for honestly releasing a *computational candidate dataset*, but they are prerequisites for claiming a validated screening library.
+**Do / pass:** Plan multiple independent designs per target when feasible, non-targeting and positive/negative controls, library representation and sequencing QC, and an assay-specific power/replicate plan. Experimentally measure edit rates, m⁶A changes, protein/splicing and phenotype with orthogonal confirmation. Motif-disruption alternatives for nonsynonymous A→G sites need their own coding/transcript/motif analysis. These are **not** prerequisites for honestly releasing a *computational candidate dataset*, but they are prerequisites for claiming a validated screening library.
 
 ## Current decision and ownership
 

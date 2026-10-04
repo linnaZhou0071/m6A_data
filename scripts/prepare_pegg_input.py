@@ -65,7 +65,7 @@ def convert_to_pegg_format(input_file, output_file):
         print(f"Skipped {len(skipped_positions)} positions with unsupported format: {', '.join(map(str, skipped_positions))}", file=sys.stderr)
 
 def main():
-    parser = argparse.ArgumentParser(description="Convert filtered m6A sites to PEGG CSV inputs")
+    parser = argparse.ArgumentParser(description="Convert filtered m⁶A sites to PEGG CSV inputs")
     parser.add_argument("--input-dir", default="data/intermediate")
     parser.add_argument("--output-dir", default="data/intermediate")
     parser.add_argument("--input-file", help="Explicit filtered CSV; use with --output-file")

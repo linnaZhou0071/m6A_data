@@ -47,8 +47,8 @@ def collect() -> list[tuple[Path, str]]:
                  for p in ROOT.glob("pegg_results_*.csv"))
     items.extend((p, "historical_local_not_current")
                  for p in (ROOT / "figures").glob("*.jpg"))
-    # Preserve the original local Prism filename; translating it would break lookup.
-    prism = ROOT / "m6A项目作图.pzfx"
+    # The user's renamed local Prism project; it is not published.
+    prism = ROOT / "m6A_plotting.pzfx"
     if prism.exists():
         items.append((prism, "historical_local_not_current"))
     if len(items) != len({p for p, _ in items}):
